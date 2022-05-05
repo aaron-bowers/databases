@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS chat;
 
 CREATE DATABASE chat;
 
-USE chat;
+USE chat; /* run use chat in mysql terminal to be able to access the chat database */
 
 CREATE TABLE messages (
   /* Describe your table here.*/
@@ -25,8 +25,10 @@ CREATE TABLE users (
 
 CREATE TABLE rooms (
   /* Describe your table here.*/
+  id_rooms INT AUTO_INCREMENT,
+  roomname VARCHAR(1000),
   id_users INT,
-  id_rooms INT
+  PRIMARY KEY (id_rooms)
 );
 
 /*  Execute this file from the command line by typing:

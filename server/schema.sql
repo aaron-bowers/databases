@@ -8,9 +8,8 @@ CREATE TABLE messages (
   /* Describe your table here.*/
   id INT AUTO_INCREMENT,
   message_text VARCHAR(1000),
-  message_timestamp TIMESTAMP,
   id_users INT,
-  id_rooms INT,
+  roomname VARCHAR(20),
   PRIMARY KEY (id)
 );
 
@@ -19,16 +18,8 @@ CREATE TABLE messages (
 CREATE TABLE users (
   /* Describe your table here.*/
   id INT AUTO_INCREMENT,
-  name INT(30),
+  username VARCHAR(20),
   PRIMARY KEY (id)
-);
-
-CREATE TABLE rooms (
-  /* Describe your table here.*/
-  id_rooms INT AUTO_INCREMENT,
-  roomname VARCHAR(1000),
-  id_users INT,
-  PRIMARY KEY (id_rooms)
 );
 
 /*  Execute this file from the command line by typing:

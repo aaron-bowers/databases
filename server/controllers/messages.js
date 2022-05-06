@@ -4,7 +4,7 @@ module.exports = {
   get: function (req, res) {
     models.messages.getAll((err, data) => {
       if (err) {
-        console.log(err);
+        // console.log(err);
         let statusCode = 404;
         res.writeHead(statusCode);
       } else {
@@ -16,15 +16,16 @@ module.exports = {
     });
   }, // a function which handles a get request for all messages
   post: function (req, res) {
-    console.log(req.body.message);
+    // console.log(req.body);
+    // let postData = [req.body.username, req.body.message];
     models.messages.create(req.body.message, (err, data) => {
       if (err) {
-        console.log(err);
+        // console.log(err);
       } else {
-        console.log(data);
+        // console.log(data);
+        res.writeHead(200);
+        res.end();
       }
     });
-    res.writeHead(200);
-    res.end();
   } // a function which handles posting a message to the database
 };

@@ -15,7 +15,7 @@ module.exports = {
   }, // a function which produces all the messages
   create: function (message, callback) {
     let queryStr = 'INSERT INTO messages (message_text) VALUES (?)';
-    db.query(quertStr, [message], (err, result) => {
+    db.query(queryStr, [message], (err, result) => {
       if (err) {
         callback(err);
       } else {

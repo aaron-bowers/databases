@@ -17,10 +17,11 @@ module.exports = {
   }, // a function which handles a get request for all messages
   post: function (req, res) {
     // console.log(req.body);
-    // let postData = [req.body.username, req.body.message];
-    models.messages.create(req.body.message, (err, data) => {
+    let postData = [req.body.message, req.body.roomname, req.body.username];
+    models.messages.create(postData, (err, data) => {
       if (err) {
         // console.log(err);
+        throw Error(err);
       } else {
         // console.log(data);
         res.writeHead(200);

@@ -12,13 +12,13 @@ module.exports = {
     });
   },
   create: function (username, callback) {
-    db.query(
-      `INSERT INTO users (username) VALUES ('${username}')`, (err, result) => {
-        if (err) {
-          callback(err);
-        } else {
-          callback(null, result);
-        }
-      });
+    let queryStr = 'INSERT INTO users (username) VALUES (?)';
+    db.query(queryStr, (err, result) => {
+      if (err) {
+        callback(err);
+      } else {
+        callback(null, result);
+      }
+    });
   }
 };

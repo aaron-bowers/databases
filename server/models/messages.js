@@ -3,7 +3,7 @@ var db = require('../db');
 module.exports = {
   getAll: function (callback) {
     let queryStr = 'SELECT messages.id, messages.messages FROM messages \
-                    left outer join users on (messages.id_user = users.id_user) \
+                    left outer join users on (messages.id_users = users.id_user) \
                     order by messages.id desc';
     db.query(queryStr, (err, message) => {
       if (err) {
@@ -13,9 +13,9 @@ module.exports = {
       }
     });
   }, // a function which produces all the messages
-  create: function (message, callback) {
-    let queryStr = 'INSERT INTO messages (message_text) VALUES (?)';
-    db.query(queryStr, [message], (err, result) => {
+  create: function (postData, callback) {
+    let queryStr = 'INSERT INTO messages (message_text, roomname, id_users) VALUES (?, ?, (select id from users where username = ? limit 1))';
+    db.query(queryStr, postData, (err, result) => {
       if (err) {
         callback(err);
       } else {
